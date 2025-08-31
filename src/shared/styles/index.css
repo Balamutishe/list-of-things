@@ -71,11 +71,11 @@ body {
   background-color: #ffffff;
 }
 
-h1,
+/* h1,
 h2,
 h3 {
   margin: 0;
-}
+} */
 
 p {
   margin: 0;
@@ -86,7 +86,7 @@ img {
   height: 100%;
 }
 
-button {
+/* button {
   padding: 0;
   margin: 0;
 
@@ -98,7 +98,7 @@ button {
   background-color: inherit;
 
   cursor: pointer;
-}
+} */
 
 input {
   appearance: none;
