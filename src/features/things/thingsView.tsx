@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { parseISO, format } from "date-fns";
 
 import { useThingsGet } from "@shared/api/things/useThingsGet";
 import type { Thing } from "@shared/types/things";
@@ -33,6 +34,13 @@ export const ThingsView = () => {
   );
 };
 
+export const Date = ({ date }: { date: string }) => {
+  const parsedDate = parseISO(date);
+  return (
+    <time dateTime={date}>{format(parsedDate, "kk:mm:ss, d LLLL yyyy")}</time>
+  );
+};
+
 export const ThingCard = ({ thing }: { thing: Thing }) => {
   const [editMode, setEditMode] = useState(false);
 
@@ -45,9 +53,9 @@ export const ThingCard = ({ thing }: { thing: Thing }) => {
   return (
     <div className="flex items-center justify-between">
       {!editMode ? (
-        <span className="w-1/3 italic">{thing.name}</span>
+        <span className="w-1/4 italic">{thing.name}</span>
       ) : (
-        <span className="w-1/3">
+        <span className="w-1/4">
           <ThingChange
             id={thing.id}
             name={thing.name}
@@ -55,10 +63,13 @@ export const ThingCard = ({ thing }: { thing: Thing }) => {
           />
         </span>
       )}
-      <small className="w-1/3 text-gray-500">
-        Created at: {thing.createdAt.toLocaleString()}
+      <small className="w-1/4 text-gray-500">
+        Created at: <Date date={thing.createdAt.toLocaleString()} />
       </small>
-      <div className="flex w-1/3 justify-end gap-2">
+      <small className="w-1/4 text-gray-500">
+        Updated at: <Date date={thing.updatedAt.toLocaleString()} />
+      </small>
+      <div className="flex w-1/4 justify-end gap-2">
         <Button variant="default" onClick={() => setEditMode(!editMode)}>
           <PencilSquareIcon className="h-5 w-5" />
         </Button>
