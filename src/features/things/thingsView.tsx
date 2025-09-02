@@ -68,7 +68,7 @@ export const ThingCard = ({ thing }: { thing: Thing }) => {
           />
         </span>
       )}
-      <small className="w-1/4 text-gray-500">
+      <small className="mr-2 w-1/4 text-gray-500">
         Created at: <Date date={thing.createdAt.toLocaleString()} />
       </small>
       <small className="w-1/4 text-gray-500">
