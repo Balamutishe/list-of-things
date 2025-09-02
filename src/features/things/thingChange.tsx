@@ -24,14 +24,23 @@ export const ThingChange = ({
     setEditMode(false);
   };
 
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.code === "Enter" && thingName !== name) {
+      thingChange.mutate({ id, data: thingName });
+
+      setEditMode(false);
+    }
+  };
+
   return (
     <input
       type="text"
       value={thingName}
       onChange={(e) => setThingName(e.target.value)}
       onBlur={handleChangeThing}
+      onKeyUp={(e) => handleKeyUp(e)}
       autoFocus={true}
-      className="w-full"
+      className="w-full outline-none"
       placeholder="Enter thing name"
     />
   );

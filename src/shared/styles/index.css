@@ -102,18 +102,18 @@ img {
 
 input {
   appearance: none;
-  outline: none;
-  border: none;
+  /* outline: none;
+  border: none; */
 }
 
 input:focus-visible {
-  outline: none;
+  /* outline: none; */
   cursor: pointer;
 }
 
 ul {
-  margin: 0;
-  padding: 0;
+  /* margin: 0;
+  padding: 0; */
   list-style: none;
 }
 

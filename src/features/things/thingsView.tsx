@@ -7,9 +7,11 @@ import Button from "@shared/ui/button";
 import { ThingDelete } from "./thingDelete";
 import { ThingChange } from "./thingChange";
 import { PencilSquareIcon } from "@heroicons/react/24/outline";
+import { useSearchStore } from "@app/store/search";
 
 export const ThingsView = () => {
-  const thingsData = useThingsGet();
+  const queryString = useSearchStore((state) => state.query);
+  const thingsData = useThingsGet(queryString);
 
   if (thingsData.isLoading) {
     return <div>Loading...</div>;
@@ -21,7 +23,7 @@ export const ThingsView = () => {
 
   return (
     <>
-      {thingsData.data.length > 0 ? (
+      {thingsData.data && thingsData.data.length > 0 ? (
         thingsData.data.map((thing: Thing) => (
           <li key={thing.id} className="mb-2 border-b-2 border-gray-300 p-2">
             <ThingCard thing={thing} />
