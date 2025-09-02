@@ -25,7 +25,10 @@ export const ThingsView = () => {
     <>
       {thingsData.data && thingsData.data.length > 0 ? (
         thingsData.data.map((thing: Thing) => (
-          <li key={thing.id} className="mb-2 border-b-2 border-gray-300 p-2">
+          <li
+            key={thing.id}
+            className="transition-color mb-2 rounded-t-xl border-b-2 border-gray-300 p-2 transition-colors hover:rounded-xl hover:border-emerald-400 hover:bg-emerald-400"
+          >
             <ThingCard thing={thing} />
           </li>
         ))
