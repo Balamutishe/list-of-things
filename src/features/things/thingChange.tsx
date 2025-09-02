@@ -25,8 +25,8 @@ export const ThingChange = ({
   };
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.code === "Enter" && thingName !== name) {
-      thingChange.mutate({ id, data: thingName });
+    if (e.code === "Enter") {
+      if (thingName !== name) thingChange.mutate({ id, data: thingName });
 
       setEditMode(false);
     }
